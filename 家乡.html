@@ -1,0 +1,854 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>   
+        html,
+        body,    
+    #container {
+    width: 100%;
+    height: 100%;
+    }
+    .input-card{
+        position: fixed;
+        background-color:#aaa9b0;
+        overflow-y: auto;
+        width: 120px;
+        height: 120px;
+        top: 10px;
+        right: 10px;
+    }
+    .input-card .btn{
+    margin-right: 1.2rem;
+    width: 9rem;
+    }
+    .input-card .btn:last-child{
+    margin-right: 0;
+    }
+  </style>
+<script type="text/javascript">
+    window._AMapSecurityConfig = {
+      securityJsCode: "b92b75fc9eefe2c495eceb74d76797c7",
+    };
+  </script>
+  <script src="https://webapi.amap.com/loader.js"></script>
+<script src="https://webapi.amap.com/maps?v=2.0&key=1f68038def95a662d4f20969f1a1e014&plugin=AMap.Driving,AMap.Transfer,Amap.Walking,Amap.Riding,Amap.TruckDriving,Amap.DragRoute,AMap.MoveAnimation"></script>
+</head>
+<body>
+
+    <div id="container"></div>
+    <div class="input-card">
+        <div class="input-item">
+            <input type="button" class="btn" value="开始动画" id="start" onclick="startAnimation()"/>
+        </div>
+    </div>
+    
+
+    <script>
+
+          var map = new AMap.Map("container", {
+          center:[102.759575,25.06049756],
+          viewMode:'2D',
+          zoom:15,
+        });//初始地图加载
+        AMap.plugin(['AMap.ToolBar','AMap.Scale','AMap.ControlBar','AMap.Geolocation','AMap.HawkEye'],function(){
+
+var toolbar = new AMap.ToolBar({
+
+position:{
+
+  right:'100%',
+
+  top:'100%'
+
+}});
+
+var Scale = new AMap.Scale();      
+
+var ControlBar = new AMap.ControlBar();         
+
+var Geolocation = new AMap.Geolocation({
+
+position:{
+
+  right:'100%',
+
+  top:'100%'
+
+}});
+
+var HawkEye = new AMap.HawkEye({ 
+
+position:{
+
+  right:'100%',
+
+  top:'100%'
+
+}});
+
+map.addControl(toolbar);
+
+map.addControl(Scale);
+
+map.addControl(ControlBar);
+
+map.addControl(Geolocation);
+
+map.addControl(HawkEye);
+
+
+
+});
+
+
+
+
+
+const position = new AMap.LngLat(102.760119,25.057331); //Marker 经纬度
+
+const icon = new AMap.Icon({image:'D:/证件照/微信图片_20220311233203.jpg',imageSize:[50,50]});
+
+
+
+const marker = new AMap.Marker({
+
+
+
+position: position,
+
+icon:icon
+
+
+
+
+
+
+
+
+
+});
+
+
+
+map.add(marker);
+
+
+
+var text = new AMap.Text({
+
+position: new AMap.LngLat(102.758869,25.059476),
+
+anchor :'bottom-right',
+
+text:'西南林业大学',
+
+style:{'background-color':'red'},
+
+
+
+});
+
+map.add(text);
+
+
+
+
+
+var text = new AMap.Text({
+
+position: new AMap.LngLat(102.758791,25.060332),
+
+anchor :'bottom-right',
+
+text:'致真楼',
+
+style:{'background-color':'green','font-size':'10px'},
+
+
+
+});
+
+map.add(text);
+
+var text = new AMap.Text({
+
+position: new AMap.LngLat(102.755813,25.057231),
+
+anchor :'bottom-right',
+
+text:'致信楼',
+
+style:{'background-color':'red','font-size':'10px'},
+
+
+
+});
+
+map.add(text);
+
+102.762117,25.061633
+
+
+
+var text = new AMap.Text({
+
+position: new AMap.LngLat(102.762117,25.061633),
+
+anchor :'bottom-right',
+
+text:'体育馆',
+
+style:{'background-color':'green','font-size':'10px'},
+
+
+
+});
+
+map.add(text);
+
+var text = new AMap.Text({
+
+position: new AMap.LngLat(102.757926,25.061454),
+
+anchor :'bottom-right',
+
+text:'北图书馆',
+
+style:{'background-color':'red','font-size':'10px'},
+
+
+
+});
+
+map.add(text);
+
+var text = new AMap.Text({
+
+position: new AMap.LngLat(102.756843,25.061623),
+
+anchor :'bottom-right',
+
+text:'至善楼',
+
+style:{'background-color':'green','font-size':'10px'},
+
+
+
+});
+
+map.add(text);
+
+var text = new AMap.Text({
+
+position: new AMap.LngLat(102.757755,25.059146),
+
+anchor :'bottom-right',
+
+text:'林工楼',
+
+style:{'background-color':'red','font-size':'10px'},
+
+
+
+});
+
+map.add(text);
+
+
+
+var text = new AMap.Text({
+
+position: new AMap.LngLat(102.759919,25.059089),
+
+anchor :'bottom-right',
+
+text:'园林楼',
+
+style:{'background-color':'green','font-size':'10px'},
+
+
+
+});
+
+map.add(text);
+
+var text = new AMap.Text({
+
+position: new AMap.LngLat(102.752626,25.056044),
+
+anchor :'bottom-right',
+
+text:'樟苑餐厅',
+
+style:{'background-color':'red','font-size':'10px'},
+
+
+
+});
+
+map.add(text);
+
+
+
+var text = new AMap.Text({
+
+position: new AMap.LngLat(102.75471,25.056788),
+
+anchor :'bottom-right',
+
+text:'土木楼',
+
+style:{'background-color':'green','font-size':'10px'},
+
+
+
+});
+
+map.add(text);
+
+var text = new AMap.Text({
+
+position: new AMap.LngLat(102.757336,25.05685),
+
+anchor :'bottom-right',
+
+text:'南图书馆',
+
+style:{'background-color':'red','font-size':'10px'},
+
+
+
+});
+
+map.add(text);
+
+
+
+var text = new AMap.Text({
+
+position: new AMap.LngLat(102.759016,25.061747),
+
+anchor :'bottom-right',
+
+text:'松苑餐厅',
+
+style:{'background-color':'green','font-size':'10px'},
+
+
+
+});
+
+map.add(text);
+
+var text = new AMap.Text({
+
+position: new AMap.LngLat(102.758085,25.062651),
+
+anchor :'bottom-right',
+
+text:'竹苑餐厅',
+
+style:{'background-color':'red','font-size':'10px'},
+
+
+
+});
+
+map.add(text);
+
+
+
+map.add(text);
+
+var text = new AMap.Text({
+
+position: new AMap.LngLat(102.755453,25.062391),
+
+anchor :'bottom-right',
+
+text:'国际交流中心',
+
+style:{'background-color':'red','font-size':'10px'},
+
+
+
+});
+
+map.add(text);
+
+var text = new AMap.Text({
+
+position: new AMap.LngLat(102.75582,25.062608),
+
+anchor :'bottom-right',
+
+text:'竹苑宿舍',
+
+style:{'background-color':'red'},
+
+
+
+});
+
+map.add(text);
+
+
+
+var text = new AMap.Text({
+
+position: new AMap.LngLat(102.75582,25.062608),
+
+anchor :'bottom-right',
+
+text:'松苑宿舍',
+
+style:{'background-color':'red'},
+
+
+
+});
+
+map.add(text);
+
+
+
+var text = new AMap.Text({
+
+position: new AMap.LngLat(102.761076,25.059568),
+
+anchor :'bottom-right',
+
+text:'橡苑宿舍',
+
+style:{'background-color':'green'},
+
+
+
+});
+
+map.add(text);
+
+
+
+
+
+var text = new AMap.Text({
+
+position: new AMap.LngLat(102.76318,25.057428),
+
+anchor :'bottom-right',
+
+text:'橡苑宿舍',
+
+style:{'background-color':'green'},
+
+
+
+});
+
+map.add(text);
+
+
+
+
+
+var text = new AMap.Text({
+
+position: new AMap.LngLat(102.75661,25.057289),
+
+anchor :'bottom-right',
+
+text:'茶苑宿舍',
+
+style:{'background-color':'red'},
+
+
+
+});
+
+map.add(text);
+
+
+
+
+
+var text = new AMap.Text({
+
+position: new AMap.LngLat(102.760119,25.057331),
+
+anchor :'bottom-right',
+
+text:'秋海',
+
+style:{'background-color':'red','font-size':'10px'},
+
+
+
+});
+
+map.add(text);
+
+
+
+
+
+var text = new AMap.Text({
+
+position: new AMap.LngLat(102.761767,25.058626),
+
+anchor :'bottom-right',
+
+text:'第四食堂',
+
+style:{'background-color':'blue','font-size':'10px'},
+
+
+
+});
+
+map.add(text);
+
+
+
+var text = new AMap.Text({
+
+position: new AMap.LngLat(102.761936,25.062816),
+
+anchor :'bottom-right',
+
+text:'足球场',
+
+style:{'background-color':'blue'},
+
+
+
+});
+
+map.add(text);
+
+var text = new AMap.Text({
+
+position: new AMap.LngLat(102.757076,25.056265),
+
+anchor :'bottom-right',
+
+text:'生物与食品工程学院',
+
+style:{'background-color':'blue','font-size':'10px'},
+
+
+
+});
+
+map.add(text);
+
+
+
+var text = new AMap.Text({
+
+position: new AMap.LngLat(102.756577,25.057918),
+
+anchor :'bottom-right',
+
+text:'茶园餐厅',
+
+style:{'background-color':'purple','font-size':'10px'},
+
+
+
+});
+
+map.add(text);
+
+
+
+var text = new AMap.Text({
+
+position: new AMap.LngLat(102.754979,25.058016),
+
+anchor :'bottom-right',
+
+text:'立德楼',
+
+style:{'background-color':'yellow','font-size':'10px'},
+
+
+
+});
+
+map.add(text);
+
+var text = new AMap.Text({
+
+position: new AMap.LngLat(102.757784,25.062037),
+
+anchor :'bottom-right',
+
+text:'标本馆',
+
+style:{'background-color':'yellow','font-size':'10px'},
+
+
+
+});
+
+map.add(text);
+
+
+
+
+
+
+
+
+
+var markersData = [
+
+{position: [102.758791,25.060332], title: "至真楼", content: '教学楼是学校用于开展教学、讲座及各类团体活动的场所，在非教学时间供学生团体开展活动，并为学生提供学习场地'},
+
+{position: [102.758869,25.059476], title: "西南林业大学", content: '西南林业大学（Southwest Forestry University），简称西南林大，位于云南省昆明市，为原林业部与地方政府合作共建的首批高校， 是以林学、林业工程、风景园林学为传统优势，生物学、环境科学与工程为显著特色，理、工、农、文、法、管等多学科门类协调发展的全日制普通高等本科'},
+
+{position: [102.757784,25.062037], title: "标本馆", content:'收藏有植物、脊椎动物、昆虫、木材、植物病理与真菌五大类标本近50余万份，包括部分师生个人收藏和捐赠。对学校教学、科研、对外合作、交流与宣传起到了重要作用。'},
+
+{position: [102.754979,25.058016], title: "立德楼", content:'在学校分管院长的领导下，为全院教学、科研及广大师生提供良好的环境和后勤保障及服务工作的部门。'},
+
+{position: [102.760119,25.057331], title: "秋海", content:'秋海的环境优美，书香弥漫，竹影清风，草木欣妍，水天一色。清晨，秋海和西南林业大学的学生一同醒来，晨读声随着风掠过水面，引得细碎的浮光在水面颤动。'},
+
+];
+
+
+
+// 遍历数据添加标记点
+
+markersData.forEach(function(item) {
+
+var marker = new AMap.Marker({
+
+  position: item.position,
+
+  title: item.title
+
+});
+
+
+
+// 添加点击事件以显示信息窗口
+
+marker.on('click', function() {
+
+  var infoWindow = new AMap.InfoWindow({
+
+      content: "<div style='width:200px;text-align:center;padding:10px;'>" + item.content + "</div>",
+
+      offset: new AMap.Pixel(0, -30)
+
+  });
+
+  infoWindow.open(map, marker.getPosition());
+
+});
+
+
+
+// 将标记点添加到地图上
+
+map.add(marker);
+
+});
+        //2.添加地图控件
+
+      AMap.plugin(['AMap.ToolBar','AMap.Scale','AMap.ControlBar','AMap.Geolocation','AMap.HawkEye','AMap.MapType'],function(){ 
+
+var toolbar = new AMap.ToolBar({
+
+  position:{
+
+  right:'100px',
+
+  bottom:'200px',}
+
+}
+
+); //缩放工具条实例化
+
+var Scale = new AMap.Scale(
+
+  {
+
+    position:{
+
+  left:'100px',
+
+  bottom:'200px',}
+
+  }
+
+);//显示比例尺
+
+var ControlBar = new AMap.ControlBar(
+
+  {
+
+    position:{
+
+  right:'100px',
+
+  top:'200px',}
+
+  }
+
+);//地图旋转和倾斜
+
+var Geolocation = new AMap.Geolocation(
+
+  {
+
+    position:{
+
+  left:'100px',
+
+  top:'200px',}
+
+  }
+
+);//定位功能
+
+//var HawkEye = new AMap.HawkEye();//缩略图（鹰眼）
+
+//var MapType = new AMap.MapType();//切换地图类型
+
+map.addControl(toolbar); //添加控件
+
+map.addControl(Scale); //添加控件
+
+map.addControl(ControlBar); //添加控件
+
+map.addControl(Geolocation); //添加控件
+
+//map.addControl(HawkEye); //添加控件
+
+//map.addControl(MapType); //添加控件
+
+});
+
+
+
+//3.添加标记
+
+const Position = new AMap.LngLat(102.759575,25.06049756); //Marker 经纬度
+
+const Icon = new AMap.Icon({image:'新建文件夹/微信图片_20220311233203.jpg',imageSize:[20,20]});
+
+const Marker = new AMap.Marker({
+
+  position: position,
+
+  icon:icon
+
+  //content: markerContent, //将 html 传给 content
+
+  //offset: new AMap.Pixel(-13, -30), //以 icon 的 [center bottom] 为原点
+
+});
+
+map.add(marker);
+
+var text=new AMap.Text({
+
+position:new AMap.LngLat(102.758797,25.060332),
+
+offset:new AMap.Pixel(20,-5),
+
+anchor:'botton-center',
+
+text:'西南林业大学',
+
+style:{'background-color':'white'}
+
+});
+
+map.add(text);  
+AMap.plugin("AMap.Driving", function () {
+  var driving = new AMap.Driving({
+map:map,
+    policy: 0, //驾车路线规划策略，0是速度优先的策略
+  });
+  var startLngLat = [102.755885,25.061868]; //起始点坐标
+  var endLngLat = [102.762776,25.06038]; //终点坐标
+  driving.search(startLngLat, endLngLat, function (status, result) {
+    //status：complete 表示查询成功，no_data 为查询无结果，error 代表查询错误
+    //查询成功时，result 即为对应的驾车导航信息
+  });
+});
+AMap.plugin("AMap.Driving", function () {
+  var driving = new AMap.Driving({
+    policy: 0, //驾车路线规划策略，0是速度优先的策略
+  });
+  
+  });
+
+
+        marker0 = new AMap.Marker({
+            map: map,
+            position: [102.758797,25.060332],
+            icon: "https://a.amap.com/jsapi_demos/static/demo-center-v2/car.png",
+            offset: new AMap.Pixel(-13, -26),
+            duration:100,
+        });//图标
+
+        AMap.plugin(["AMap.Driving","AMap.DragRoute"], function () {
+        var driving = new AMap.Driving({
+          map:map,
+          policy:0, 
+        });
+        var path = [];
+        path.push([102.759034,25.061759]);
+        path.push([102.758977,25.061637]);
+        path.push([102.758722,25.061752]);
+        path.push([102.75886,25.062223]);
+        path.push([102.758923,25.062385]);
+        path.push([102.758498,25.062453]);
+        path.push([102.758121,25.062889]);
+        path.push([102.757305,25.063415]);
+        path.push([102.757085,25.063418]);
+        path.push([102.756365,25.06318]);
+        path.push([102.755812,25.062728]);
+        path.push([102.755928,25.062434]);
+        path.push([102.756369,25.061719]);
+        path.push([102.757107,25.060917]);
+        path.push([102.757965,25.060067]);
+        path.push([102.758244,25.059775]);
+        path.push([102.75818,25.059603]);
+        path.push([102.758105,25.058765]);
+        path.push([102.758061,25.057056]);
+        path.push([102.758061,25.057056]);
+        path.push([102.758547,25.056609]);
+        path.push([102.758699,25.056564]);
+        path.push([102.758579,25.056513]);
+        path.push([102.758459,25.056487]);
+        path.push([102.758276,25.056468]);
+        path.push([102.756154,25.056759]);
+        path.push([102.756191,25.056754]);
+        path.push([102.75627,25.057265]);
+        path.push([102.755844,25.05726]);
+        var route = new AMap.DragRoute(map, path, 0);//动态
+        route.search();
+        driving.search(path,function(status,result){
+            });
+        });//动态路线动画
+
+          function startAnimation(){
+            marker0.moveAlong(path,{duration:10000,})//速度
+          };
+ 
+    </script>
+    
+</body>
+</head>
+<body>
+    
+</body>
+</html>
